@@ -14,8 +14,9 @@
                     <p style="text-align: center; font-size: 1.8rem; font-weight: bold; color: #333;">Hey everyone! 👋</p>
                     <p style="color: #444; font-size: 1.2rem; line-height: 1.6;">
                         I'm <span style="color: #56a0d3; font-weight: bold;">Yuvraj</span>, a senior at <span style="color: #56a0d3; font-weight: bold;">UNC Chapel Hill</span> 
-                        majoring in Computer Science and Statistics, with a minor in Data Science. 🎓 <span style="color: #147f06; font-weight: bold;">I'm passionate about using technology 
-                        to make a difference</span>, whether it's through software development or data analysis. 
+                        majoring in Computer Science and Statistics, with a minor in Data Science. 🎓 I'm currently <span style="color: #e60800; font-weight: bold;"> interning at Kinetik Simulations as a SWE </span> where I am analyzing data, 
+                        building the company website, and leveraging AWS services like S3, Athena, Cognito, IAM, KMS, and Glue. <span style="color: #147f06; font-weight: bold;">
+                        I'm passionate about using technology to make a difference</span>, whether it's through software development or data analysis. 
                     </p>
                     <p style="color: #444; font-size: 1.2rem; line-height: 1.6;">
                         At <a href="https://csxl.unc.edu/welcome"> CSXL</a>, 
@@ -38,18 +39,22 @@
         <!--Featured Project-->
         <div class="col-lg shadow border m-1" style="border-radius: 15px;">
             <div class="text-center" style="padding-top: 20px;">
-                <h2> Featured Project </h2>
-                <h4> {{ featuredProject[0].name }} </h4>
+                <h2> Featured Projects </h2>
             </div>
 
-            <carousel>
-                <div *ngFor="let picture of featuredProject[0].pictures">
-                    <slide> <img src={{picture}} alt="slide" style="display: block; width: 100%;"> </slide>
+            <div *ngFor="let project of featuredProject">
+                <div class="text-center" style="padding-top:20px">
+                    <h4> {{ project.name }} </h4>
+                    <carousel>
+                        <div *ngFor="let picture of project.pictures">
+                            <slide> <img src={{picture}} alt="slide" style="display: block; width: 100%;"> </slide>
+                        </div>
+                    </carousel>
+        
+                    <p class="mt-2" style="color: #444; font-size: 1.2rem; line-height: 1.6;">{{project.summary}}</p>
                 </div>
-            </carousel>
-
-            <p class="mt-2">{{featuredProject[0].summary}}</p>
-            <p> Visit the Portfolio section to learn more! </p>
+            </div>
+            <p class="mt-2" style="color: #444; font-size: 1.2rem; line-height: 1.6;"> Visit the Portfolio section to learn more! </p>
         </div>
     </div>
 </div>
