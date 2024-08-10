@@ -9,6 +9,7 @@ export class Tag {
     static readonly JAVASCRIPT = new Tag('JavaScript', 'orange');
     static readonly REACT = new Tag('React', 'blue');
     static readonly POSTGRESQL = new Tag('PostgreSQL', '#336791');
+    static readonly KUBERNETES = new Tag('Kubernetes', 'indianred');
     
     private constructor(private readonly key: string, public readonly color: string) {
 
