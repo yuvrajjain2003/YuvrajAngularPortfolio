@@ -19,9 +19,9 @@ export class PortfolioComponent implements OnInit {
     ) {
         this.titleService.setTitle("Yuvraj Jain - Portfolio")
     }
-    
+
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
+        this.projects = this.projectService.getProjects();
     }
 
 }
