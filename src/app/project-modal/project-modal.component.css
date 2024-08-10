@@ -1,0 +1,4 @@
+::ng-deep .carousel-image {
+    display: block;
+    width: 100%;
+}
