@@ -4,6 +4,17 @@
     margin: 0 auto; /* This centers the container */
 } 
 
+.tag {
+    padding: 0 20px;
+    height: 30px;
+    width: fit-content;
+    font-size: 14px;
+    line-height: 30px;
+    border-radius: 25px;
+    background-color: blue;
+    color: white;
+}
+
 nav.navbar-expand-md {
     margin-bottom: 0 !important; /* Remove the margin-bottom set by 'mb-3' */
     border-top: 4px solid #6c757d !important;
