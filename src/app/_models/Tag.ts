@@ -13,7 +13,8 @@ export class Tag {
     static readonly ARDUINO = new Tag('Arduino', '#00979D'); // Arduino Teal
     static readonly CPP = new Tag('C++', '#00599C'); // C++ Blue
     static readonly C = new Tag('C', '#A8B9CC'); // C Light Blue
-    static readonly AI = new Tag('AI', '#588970'); // C Light Blue
+    static readonly AI = new Tag('AI', '#588970'); 
+    static readonly PYGAME = new Tag('Pygame', 'pink'); 
     
     
     private constructor(private readonly key: string, public readonly color: string) {
