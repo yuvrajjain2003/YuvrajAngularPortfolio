@@ -8,4 +8,9 @@ export interface Project {
     projectLink: string;
     pictures: string[];
     tags: Tag[];
+    category?: string;
+    accentColor?: string;
+    featured?: boolean;
+    publication?: string;
+    publicationLink?: string;
 }

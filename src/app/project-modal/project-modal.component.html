@@ -1,25 +1,63 @@
-<div class="modal-header">
-    <h2> {{ project.name }} </h2>
-    <button class="btn-close" (click)="bsModalRef.hide()"></button>
-</div>
-
-<div class="modal-body">
-    <carousel>
-        <div *ngFor="let picture of project.pictures">
-            <slide> 
-                <img src="{{picture}}" alt="slide" class="carousel-image">
-            </slide>
-        </div>
-    </carousel>
-
-    <h3 class="mt-2"> Description </h3>
-    <p [innerHTML]="project.description"></p>
-    <p> You can find this project on GitHub <a href={{project.projectLink}} target="_blank"> here. </a></p>
-
-    <hr>
-    <div class="d-flex flex-wrap">
-        <div *ngFor="let tag of project.tags">
-            <div class="tag me-2 mb-1" [style.background-color]="tag.color"> {{tag}} </div>     
-        </div>
+<div class="modal-wrapper">
+  <div class="modal-header">
+    <div class="modal-title-area">
+      <span class="modal-pub-badge" *ngIf="project.publication">
+        <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        {{ project.publication }}
+      </span>
+      <h2 class="modal-title">{{ project.name }}</h2>
     </div>
+    <button class="modal-close" (click)="bsModalRef.hide()" aria-label="Close">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="modal-carousel" *ngIf="project.pictures.length > 0">
+      <carousel>
+        <div *ngFor="let picture of project.pictures">
+          <slide>
+            <img [src]="picture" alt="{{ project.name }}" class="carousel-img">
+          </slide>
+        </div>
+      </carousel>
+    </div>
+
+    <div class="modal-cover-placeholder" *ngIf="project.pictures.length === 0" [style.background]="project.accentColor || 'linear-gradient(135deg, #1e2d4a, #0f172a)'">
+      <svg width="48" height="48" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>
+      </svg>
+    </div>
+
+    <div class="modal-desc">
+      <h4 class="modal-section-label">About this project</h4>
+      <div class="modal-desc-body" [innerHTML]="project.description"></div>
+    </div>
+
+    <div class="modal-links" *ngIf="project.projectLink || project.publicationLink">
+      <a *ngIf="project.projectLink" [href]="project.projectLink" target="_blank" class="modal-link-btn">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        View on GitHub
+      </a>
+      <a *ngIf="project.publicationLink" [href]="project.publicationLink" target="_blank" class="modal-link-btn modal-link-pub">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        Read Publication
+      </a>
+    </div>
+
+    <div class="modal-tags">
+      <h4 class="modal-section-label">Tech Stack</h4>
+      <div class="modal-tag-list">
+        <span *ngFor="let tag of project.tags" class="tag" [style.background-color]="tag.color">{{ tag }}</span>
+      </div>
+    </div>
+  </div>
 </div>

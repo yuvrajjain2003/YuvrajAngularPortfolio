@@ -1,14 +1,40 @@
-<div class="card shadow text-center mx-auto" style="max-width: 350px;">
-    <div class="card-body">
-        <h5 class="card-title"> {{ project.name }} </h5>
-        <p class="card-text"> {{ project.summary }} </p>
-        <button class="btn btn-primary" (click) = "openProjectModal()">View More</button>
+<div class="project-card" (click)="openProjectModal()">
+  <!-- Gradient cover for projects without images -->
+  <div class="card-cover" [style.background]="project.accentColor || 'linear-gradient(135deg, #1e2d4a 0%, #0f172a 100%)'">
+    <div class="cover-img-wrap" *ngIf="project.pictures.length > 0">
+      <img [src]="project.pictures[0]" alt="{{ project.name }}" class="cover-img">
     </div>
+    <div class="cover-placeholder" *ngIf="project.pictures.length === 0">
+      <div class="placeholder-icon">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>
+        </svg>
+      </div>
+    </div>
+    <div class="card-overlay"></div>
+    <div class="publication-badge" *ngIf="project.publication">
+      <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      {{ project.publication }}
+    </div>
+  </div>
+
+  <div class="card-body">
+    <h3 class="card-title">{{ project.name }}</h3>
+    <p class="card-summary">{{ project.summary }}</p>
+
     <div class="card-footer">
-        <div class="d-flex flex-wrap justify-content-center">
-            <div *ngFor="let tag of project.tags">
-                <div class="tag me-2 mb-1" [style.background-color]="tag.color"> {{ tag }} </div>     
-            </div>
-        </div>
+      <div class="card-tags">
+        <span *ngFor="let tag of project.tags | slice:0:4" class="tag" [style.background-color]="tag.color">{{ tag }}</span>
+        <span *ngIf="project.tags.length > 4" class="tag tag-more">+{{ project.tags.length - 4 }}</span>
+      </div>
+      <span class="card-cta">
+        View
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </span>
     </div>
+  </div>
 </div>

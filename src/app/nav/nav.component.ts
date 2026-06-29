@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
+  scrolled = false;
+  mobileOpen = false;
 
+  @HostListener('window:scroll')
+  onScroll() {
+    this.scrolled = window.scrollY > 60;
+  }
+
+  toggleMobile() {
+    this.mobileOpen = !this.mobileOpen;
+  }
 }

@@ -1,60 +1,130 @@
-<div class="container" style="padding-top: 2rem;">
-    <div class="row">
-        <!--About Me-->
-        <div class="col-lg shadow border m-1" style="border-radius: 15px;">
-            <div class="text-center" style="padding-top: 20px;">
-                <h2> About Me </h2>
-                <br>
+<!-- ── HERO ──────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-orb orb-blue"></div>
+  <div class="hero-orb orb-cyan"></div>
+  <div class="hero-orb orb-purple"></div>
+  <div class="hero-grid"></div>
 
-                <div style="padding-bottom: 2rem;">
-                    <img src="assets/Headshot2024.png" alt="Profile Picture" width="256" height="256" class="rounded-circle" style="object-fit: cover; border: 4px solid #ccc; transform: scale(1.1);">
-                </div>
-                
-                <div style="background-color: #e9ecef; padding: 2rem; border-radius: 15px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);">
-                    <p style="text-align: center; font-size: 1.8rem; font-weight: bold; color: #333;">Hey everyone! 👋</p>
-                    <p style="color: #444; font-size: 1.2rem; line-height: 1.6;">
-                        I'm <span style="color: #56a0d3; font-weight: bold;">Yuvraj</span>, a senior at <span style="color: #56a0d3; font-weight: bold;">UNC Chapel Hill</span> 
-                        majoring in Computer Science and Statistics, with a minor in Data Science. 🎓 I'm currently <span style="color: #e60800; font-weight: bold;"> interning at Kinetik Simulations as a SWE </span> where I am analyzing data, 
-                        building the company website, and leveraging AWS services like S3, Athena, Cognito, IAM, KMS, and Glue. <span style="color: #147f06; font-weight: bold;">
-                        I'm passionate about using technology to make a difference</span>, whether it's through software development or data analysis. 
-                    </p>
-                    <p style="color: #444; font-size: 1.2rem; line-height: 1.6;">
-                        At <a href="https://csxl.unc.edu/welcome"> CSXL</a>, 
-                        I had the awesome opportunity to create an Angular web app that lets students <span style="color: #e60800; font-weight: bold;">easily reserve study rooms </span>within the 
-                        Computer Science building 🖥️📚. I also stepped up as a <span style="color: #56a0d3; font-weight: bold;"> scientific programmer </span> at a Neuroscience lab 🧠, where I 
-                        helped develop and maintain vital imaging software that's now a go-to tool for professors and students alike.
-                    </p>
-                    <p style="color: #444; font-size: 1.2rem; line-height: 1.6;">
-                        When I'm not coding or crunching numbers, you'll find me <span style="color: #56a0d3; font-weight: bold;">swimming</span> 🏊‍♂️, 
-                        <span style="color: #e60800; font-weight: bold;">running</span> 🏃‍♂️, or <span style="color: #147f06; font-weight: bold;"> trekking through nature </span>🏞️. 
-                        I'm also a big fan of board games 🎲, especially when played with friends. And as a <span style="color: #e600a1; font-weight: bold;">chess enthusiast</span> ♟️ 
-                        with a rating of 1807 on chess.com, 
-                        I love challenging myself with the Ruy Lopez as White, while alternating between the Sicilian Defense and the French Defense as Black.
-                    </p>
-                </div>
-                <br>                
-            </div>
-        </div>
-
-        <!--Featured Project-->
-        <div class="col-lg shadow border m-1" style="border-radius: 15px;">
-            <div class="text-center" style="padding-top: 20px;">
-                <h2> Featured Projects </h2>
-            </div>
-
-            <div *ngFor="let project of featuredProject">
-                <div class="text-center" style="padding-top:20px">
-                    <h4> {{ project.name }} </h4>
-                    <carousel>
-                        <div *ngFor="let picture of project.pictures">
-                            <slide> <img src={{picture}} alt="slide" style="display: block; width: 100%;"> </slide>
-                        </div>
-                    </carousel>
-        
-                    <p class="mt-2" style="color: #444; font-size: 1.2rem; line-height: 1.6;">{{project.summary}}</p>
-                </div>
-            </div>
-            <p class="mt-2" style="color: #444; font-size: 1.2rem; line-height: 1.6;"> Visit the Portfolio section to learn more! </p>
-        </div>
+  <div class="hero-body container">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Open to new opportunities
     </div>
-</div>
+
+    <p class="hero-greeting">Hi, I'm</p>
+    <h1 class="hero-name">Yuvraj Jain</h1>
+
+    <div class="hero-role-row">
+      <span class="role-prefix">—</span>
+      <span class="hero-role" [class.visible]="roleVisible" [class.hidden]="!roleVisible">{{ currentRole }}</span>
+    </div>
+
+    <p class="hero-tagline">
+      M.S. CS @ UNC Chapel Hill &nbsp;·&nbsp; 4.0 GPA &nbsp;·&nbsp; First Author at ACL &amp; EMNLP 2025
+    </p>
+
+    <div class="hero-actions">
+      <a routerLink="/portfolio" class="btn-hero-primary">
+        View Projects
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+      <a routerLink="/resume" class="btn-hero-ghost">Resume</a>
+      <a href="https://www.linkedin.com/in/jain-yuvraj/" target="_blank" class="btn-hero-ghost">LinkedIn ↗</a>
+      <a href="https://github.com/yuvrajjain2003" target="_blank" class="btn-hero-ghost">GitHub ↗</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-val">4.0</span>
+        <span class="stat-lbl">GPA</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-val">2</span>
+        <span class="stat-lbl">Publications</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-val">23K+</span>
+        <span class="stat-lbl">Users Impacted</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-val">AWS</span>
+        <span class="stat-lbl">DVA-C02 Certified</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ── ABOUT ─────────────────────────────────────────────────────── -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-label">About Me</span>
+        <h2 class="section-heading">Engineer. Researcher.<br>Builder.</h2>
+        <p class="about-para">
+          I'm a graduate student and software engineer who lives at the intersection of
+          <strong>systems engineering</strong> and <strong>machine learning research</strong>.
+          Pursuing my M.S. in Computer Science at UNC Chapel Hill while working as a
+          Senior Software Engineer at Kinetik Solutions, building production platform
+          services on AWS.
+        </p>
+        <p class="about-para">
+          My work spans from designing and shipping scalable REST APIs and cloud infrastructure
+          to publishing first-author research at top NLP venues. I care deeply about building
+          things that work at scale — and understanding the fundamental principles that make
+          them work.
+        </p>
+        <p class="about-para">
+          Outside of engineering, I'm a chess enthusiast (1807 on chess.com, Campus Ambassador),
+          co-organizer of HackNC — North Carolina's largest hackathon with 500+ participants —
+          and a swimmer and runner who believes the best ideas come during long runs.
+        </p>
+        <div class="about-chips">
+          <span class="chip">🎓 Highest Honors, 1 of 2 CS awardees at UNC</span>
+          <span class="chip">📄 ACL 2025 · EMNLP 2025 · IJCIR 2021</span>
+          <span class="chip">☁️ AWS Developer Associate (DVA-C02)</span>
+          <span class="chip">♟️ Chess.com Ambassador · Rating: 1807</span>
+          <span class="chip">🏆 HackNC Lead Organizer · 500+ participants</span>
+        </div>
+      </div>
+      <div class="about-photo-col">
+        <div class="photo-wrapper">
+          <img src="assets/Headshot2024.png" alt="Yuvraj Jain" class="about-photo">
+          <div class="photo-ring"></div>
+          <div class="photo-corner tl"></div>
+          <div class="photo-corner br"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ─────────────────────────────────────────────────────── -->
+<section class="skills-section">
+  <div class="container">
+    <span class="section-label">Skills</span>
+    <h2 class="section-heading">Full-stack. Cloud-native. ML-powered.</h2>
+    <p class="section-sub">From zero-to-production across the entire stack.</p>
+    <div class="skills-grid">
+      <div class="skill-card" *ngFor="let group of skillGroups">
+        <div class="skill-card-top">
+          <span class="skill-emoji">{{ group.icon }}</span>
+          <h3 class="skill-group-name">{{ group.name }}</h3>
+        </div>
+        <div class="skill-pills">
+          <span class="skill-pill" *ngFor="let skill of group.skills">{{ skill }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,8 +1,23 @@
-<br>
-<div class="container">
-    <div class="row">
-        <div *ngFor="let project of projects" class="col-lg-4 col-md-6 col-12 mb-4">
-            <app-project-card [project] = "project"></app-project-card>
-        </div>
+<section class="portfolio-section">
+  <div class="container">
+    <div class="portfolio-header">
+      <span class="section-label">Portfolio</span>
+      <h1 class="section-heading">Projects &amp; Research</h1>
+      <p class="section-sub">Published research, production systems, and side projects — built with care.</p>
+
+      <div class="filter-bar">
+        <button
+          *ngFor="let cat of categories"
+          class="filter-btn"
+          [class.active]="activeCategory === cat.key"
+          (click)="setFilter(cat.key)">
+          {{ cat.label }}
+        </button>
+      </div>
     </div>
-</div>
+
+    <div class="projects-grid">
+      <app-project-card *ngFor="let project of filteredProjects" [project]="project"></app-project-card>
+    </div>
+  </div>
+</section>
